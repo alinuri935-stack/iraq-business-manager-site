@@ -1,47 +1,582 @@
-<section id="about">
-  <div class="intro">
-    <h2>About Us</h2>
-    <p>
-      Our goal is to make everyday business operations easier through
-      organized workflows and responsible use of automation. The service
-      is being developed for businesses that want to improve customer
-      communication and manage their online presence more efficiently.
-    </p>
-  </div>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<section id="services">
-  <div class="intro">
-    <h2>Our Services</h2>
-    <p class="muted">
-      Features depend on platform permissions and the services available
-      to each connected account.
-    </p>
-  </div>
-  <div class="cards">
-    <article class="card">
-      <h3>Social Media Management</h3>
-      <p>Organize social media content and supported publishing workflows.</p>
-    </article>
-    <article class="card">
-      <h3>Customer Communication</h3>
-      <p>Support customer inquiries and organize interactions across supported channels.</p>
-    </article>
-    <article class="card">
-      <h3>Business Insights</h3>
-      <p>Review available engagement signals to help businesses make informed decisions.</p>
-    </article>
-  </div>
-</section>
+  <title>Iraq Business Manager</title>
 
-<section id="contact">
-  <div class="intro">
-    <h2>Contact Us</h2>
-    <p>
-      <p>
-  For questions about Iraq Business Manager, its services, or privacy practices, please contact us at:
-  <a href="mailto:wake13735@gmail.com">wake13735@gmail.com</a>.
-</p>
-    
-  </div>
-</section>
+  <meta name="description" content="Iraq Business Manager is an AI-assisted business management platform for product research, customer communication, social media workflows, and business insights.">
+  <meta name="theme-color" content="#101c3a">
+  <meta name="robots" content="index, follow">
+
+  <link rel="icon" type="image/jpeg" href="./logo.jpg">
+  <link rel="apple-touch-icon" href="./logo.jpg">
+  <link rel="canonical" href="https://alinuri935-stack.github.io/iraq-business-manager-site/">
+
+  <meta property="og:title" content="Iraq Business Manager">
+  <meta property="og:description" content="AI-assisted business management, product research, customer communication, and social media workflows.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://alinuri935-stack.github.io/iraq-business-manager-site/">
+  <meta property="og:image" content="https://alinuri935-stack.github.io/iraq-business-manager-site/logo.jpg">
+
+  <style>
+    :root {
+      --navy: #101c3a;
+      --blue: #2458c6;
+      --teal: #42d6c3;
+      --background: #f4f7fb;
+      --text: #253047;
+      --muted: #65728a;
+      --border: #e1e7f0;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navigation {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      flex-wrap: wrap;
+      padding: 15px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      color: var(--navy);
+      font-size: 19px;
+      font-weight: 700;
+    }
+
+    .brand img {
+      display: block;
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    nav a {
+      color: var(--text);
+    }
+
+    .hero {
+      color: var(--white);
+      background: linear-gradient(135deg, #101c3a, #2458c6);
+      padding: 86px 0;
+    }
+
+    .hero-content {
+      max-width: 820px;
+    }
+
+    .eyebrow {
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(36px, 5.5vw, 58px);
+      line-height: 1.15;
+      margin: 18px 0;
+    }
+
+    .hero p {
+      max-width: 740px;
+      color: #e3eaf8;
+      font-size: 18px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 21px;
+      border-radius: 8px;
+      background: var(--teal);
+      color: #10213b;
+      font-weight: 700;
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid #d3def3;
+    }
+
+    section {
+      padding: 66px 0;
+    }
+
+    .white-section {
+      background: var(--white);
+    }
+
+    .section-heading {
+      max-width: 800px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: clamp(27px, 3.5vw, 36px);
+      line-height: 1.3;
+      margin: 0 0 14px;
+    }
+
+    h3 {
+      color: var(--navy);
+      line-height: 1.4;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 21px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 25px;
+    }
+
+    .white-section .card {
+      background: var(--background);
+    }
+
+    .card-icon {
+      font-size: 29px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 19px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .notice {
+      background: #e9fbf8;
+      border-left: 4px solid #14b8a6;
+      border-radius: 8px;
+      padding: 22px 25px;
+    }
+
+    .notice h3 {
+      margin-top: 0;
+    }
+
+    .notice p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-panel {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 38px;
+      color: var(--white);
+    }
+
+    .contact-panel h2 {
+      color: var(--white);
+    }
+
+    .contact-panel p {
+      color: #dce6f7;
+    }
+
+    .contact-panel a {
+      color: var(--teal);
+      overflow-wrap: anywhere;
+    }
+
+    .legal-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    footer {
+      background: #0b1224;
+      color: #cbd5e1;
+      padding: 28px 0;
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    footer a {
+      color: var(--teal);
+      margin-right: 12px;
+    }
+
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .navigation {
+        align-items: flex-start;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      .hero {
+        padding: 60px 0;
+      }
+
+      section {
+        padding: 48px 0;
+      }
+
+      .contact-panel {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container navigation">
+      <a class="brand" href="./" aria-label="Iraq Business Manager home">
+        <img src="./logo.jpg" alt="Iraq Business Manager logo">
+        <span>Iraq Business Manager</span>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#integrations">Integrations</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="eyebrow">AI-assisted business operations</div>
+
+        <h1>Iraq Business Manager</h1>
+
+        <p>
+          A business management project designed to help businesses organize
+          product research, customer relationships, social media workflows,
+          and operational information using AI-assisted tools and automation.
+        </p>
+
+        <div class="actions">
+          <a class="button" href="#services">Explore Our Services</a>
+          <a class="button secondary" href="#contact">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <h2>About Us</h2>
+
+          <p>
+            Iraq Business Manager is a developing AI-assisted business
+            management platform intended to support small businesses,
+            particularly businesses operating in Iraq. The project brings
+            together business information, workflow automation, product
+            research, and customer management in one organized system.
+          </p>
+
+          <p>
+            The platform is being developed to help business owners make
+            informed decisions while maintaining control over important
+            commercial activities.
+          </p>
+        </div>
+
+        <div class="notice">
+          <h3>Our Commitment</h3>
+          <p>
+            We aim to build practical, transparent, and responsible business
+            tools. AI-generated analysis can support decisions, but it does
+            not guarantee commercial results or replace the business owner's
+            judgment and approval.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="white-section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Our Services</h2>
+          <p>
+            The platform is being developed around the following business
+            functions. Individual capabilities depend on their implementation,
+            configuration, and the permissions granted by connected services.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">📦</div>
+            <h3>Product and Supplier Research</h3>
+            <p>
+              Organize product information, review supplier details, compare
+              available prices, and assess potential resale opportunities.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">🛍️</div>
+            <h3>Order Management</h3>
+            <p>
+              Maintain structured records for products, customers, suppliers,
+              orders, and related business activities.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">💬</div>
+            <h3>Customer Communication</h3>
+            <p>
+              Support the organization of customer inquiries, customer
+              information, and potential sales conversations through
+              configured workflows.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">📱</div>
+            <h3>Social Media Management</h3>
+            <p>
+              Develop authorized workflows for connected social media
+              accounts, subject to the functionality and permissions available
+              through each platform's APIs.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">📊</div>
+            <h3>Business Insights</h3>
+            <p>
+              Organize business records and support the review of costs,
+              sales, potential profit, and commercial opportunities using
+              available information.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">⚙️</div>
+            <h3>Workflow Automation</h3>
+            <p>
+              Use configured automation workflows to reduce repetitive tasks
+              and support consistent business recordkeeping and operations.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="integrations">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Third-Party Integrations</h2>
+          <p>
+            Iraq Business Manager is designed to work with supported
+            third-party services when the necessary integrations and
+            authorizations are available.
+          </p>
+        </div>
+
+        <div class="notice">
+          <h3>Authorization and Feature Availability</h3>
+          <p>
+            Social media integrations may involve account authorization and
+            limited access tokens needed to maintain an authorized
+            connection. Available account information and actions depend on
+            the scopes granted, platform approval, and the implementation of
+            each feature.
+          </p>
+          <p>
+            Certain integrations and capabilities remain under development.
+            We do not represent planned features as operational until they
+            have been implemented and tested.
+          </p>
+          <p>
+            Iraq Business Manager is an independent project and does not
+            claim to be owned, operated, or officially endorsed by TikTok,
+            Meta, or other third-party platforms.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy" class="white-section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Privacy and Data Protection</h2>
+          <p>
+            We recognize the importance of protecting information processed
+            through the platform. Depending on enabled features, the service
+            may process business records, customer information, and data
+            associated with authorized social media connections.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <h3>Information Handling</h3>
+            <p>
+              Information should be handled for legitimate business purposes
+              connected to the platform's configured functions and in
+              accordance with applicable requirements.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Connection Security</h3>
+            <p>
+              Access and refresh tokens may be stored in the system's
+              configured data storage to maintain authorized connections.
+              Credentials and tokens must be protected against unauthorized
+              access.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Privacy Requests</h3>
+            <p>
+              Users can contact us with questions about data handling,
+              account connections, or requests concerning their information.
+            </p>
+          </article>
+        </div>
+
+        <p>
+          For complete details, read our
+          <a href="./privacy.html">Privacy Policy</a>
+          and
+          <a href="./terms.html">Terms of Service</a>.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <h2>Contact Us</h2>
+
+          <p>
+            For questions about Iraq Business Manager, its services, privacy
+            practices, or data-related requests, please contact us by email.
+          </p>
+
+          <p>
+            Email:
+            <a href="mailto:wake13735@gmail.com">wake13735@gmail.com</a>
+          </p>
+
+          <div class="legal-links">
+            <a href="./privacy.html">Privacy Policy</a>
+            <a href="./terms.html">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        &copy; <span id="current-year">2026</span>
+        Iraq Business Manager. All rights reserved.
+      </div>
+
+      <div>
+        <a href="./privacy.html">Privacy Policy</a>
+        <a href="./terms.html">Terms of Service</a>
+        <a href="mailto:wake13735@gmail.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("current-year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
