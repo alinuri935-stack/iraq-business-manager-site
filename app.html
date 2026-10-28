@@ -83,6 +83,10 @@
       background: #eaf0ff;
       color: #1745a5;
     }
+    .tiktok-button {
+      background: #111827;
+      color: white;
+    }
     #result {
       margin-top: 15px;
       padding: 13px;
@@ -148,60 +152,87 @@
       <article class="card">
         <h3>📦 المنتجات</h3>
         <p>طلب بيانات المنتجات المسجلة في النظام.</p>
-        <button onclick="sendRequest('get_products')">عرض المنتجات</button>
+        <button onclick="sendRequest('get_products')">
+          عرض المنتجات
+        </button>
       </article>
 
       <article class="card">
         <h3>🧾 الطلبات</h3>
         <p>طلب قائمة الطلبات وحالاتها.</p>
-        <button onclick="sendRequest('get_orders')">عرض الطلبات</button>
+        <button onclick="sendRequest('get_orders')">
+          عرض الطلبات
+        </button>
       </article>
 
       <article class="card">
         <h3>👥 العملاء</h3>
         <p>طلب بيانات العملاء المسجلين.</p>
-        <button onclick="sendRequest('get_customers')">عرض العملاء</button>
+        <button onclick="sendRequest('get_customers')">
+          عرض العملاء
+        </button>
       </article>
 
       <article class="card">
         <h3>🎵 TikTok</h3>
-        <p>فتح مسار إدارة وربط TikTok في المشروع.</p>
-        <button onclick="sendRequest('tiktok_status')">فحص حالة TikTok</button>
+        <p>ربط حساب TikTok بالمشروع باستخدام تسجيل الدخول الرسمي.</p>
+        <button
+          type="button"
+          class="tiktok-button"
+          onclick="connectTikTok()">
+          تسجيل الدخول باستخدام TikTok
+        </button>
       </article>
 
       <article class="card">
         <h3>📘 Facebook</h3>
         <p>فحص حالة تكامل Facebook عند دعم ذلك من n8n.</p>
-        <button onclick="sendRequest('facebook_status')">فحص Facebook</button>
+        <button onclick="sendRequest('facebook_status')">
+          فحص Facebook
+        </button>
       </article>
 
       <article class="card">
         <h3>📸 Instagram</h3>
         <p>فحص حالة تكامل Instagram عند دعم ذلك من n8n.</p>
-        <button onclick="sendRequest('instagram_status')">فحص Instagram</button>
+        <button onclick="sendRequest('instagram_status')">
+          فحص Instagram
+        </button>
       </article>
 
       <article class="card">
         <h3>📊 التقارير</h3>
         <p>طلب ملخص التقارير من النظام عند تهيئة مسارها.</p>
-        <button onclick="sendRequest('get_reports')">طلب التقارير</button>
+        <button onclick="sendRequest('get_reports')">
+          طلب التقارير
+        </button>
       </article>
 
       <article class="card">
         <h3>🤖 مدير الأعمال الذكي</h3>
         <p>إرسال مهمة إلى مسار التطبيق إذا كان يدعمها.</p>
-        <button onclick="showTaskForm()">إرسال مهمة</button>
+        <button onclick="showTaskForm()">
+          إرسال مهمة
+        </button>
       </article>
     </section>
 
     <section class="panel" id="task-panel" hidden style="margin-top:20px">
       <h2>إرسال مهمة</h2>
+
       <label for="task-input">اكتب المهمة المطلوبة</label>
-      <textarea id="task-input" rows="4"
+
+      <textarea
+        id="task-input"
+        rows="4"
         style="width:100%;margin:12px 0;padding:12px;border:1px solid #cbd5e1;border-radius:8px;font:inherit"
         placeholder="اكتب طلبك هنا..."></textarea>
+
       <button onclick="submitTask()">إرسال إلى n8n</button>
-      <button class="secondary" style="margin-top:8px"
+
+      <button
+        class="secondary"
+        style="margin-top:8px"
         onclick="document.getElementById('task-panel').hidden=true">
         إلغاء
       </button>
@@ -210,6 +241,7 @@
     <section class="panel" style="margin-top:20px">
       <h3>عنوان خدمة n8n</h3>
       <div class="endpoint" id="endpoint"></div>
+
       <p class="muted">
         هذه الواجهة ترسل طلبات فقط. يجب إعداد Webhook2 في n8n
         لمعالجة كل action وإرجاع البيانات المناسبة. لا يتم تنفيذ
@@ -226,18 +258,22 @@
     const API_URL =
       "https://alihadii.app.n8n.cloud/webhook/ibm-app-api";
 
+    // رابط TikTok الذي اختبرته وأكدت أنه يعمل.
+    const TIKTOK_AUTHORIZE_URL =
+      "https://www.tiktok.com/v2/auth/authorize/?client_key=sbaw4jq7l86my9pzo6&response_type=code&scope=user.info.basic&redirect_uri=https%3A%2F%2Falihadii.app.n8n.cloud%2Fwebhook%2Ftiktok-oauth-callback&state=ibm-prod-20261024";
+
     const statusText = document.getElementById("status-text");
     const statusDot = document.getElementById("status-dot");
     const resultBox = document.getElementById("result");
-    const testButton = document.getElementById("test-button");
 
     document.getElementById("endpoint").textContent = API_URL;
 
     function showResult(message, data) {
       resultBox.style.display = "block";
       resultBox.textContent = message +
-        (data === undefined ? "" :
-          "\n\n" + JSON.stringify(data, null, 2));
+        (data === undefined
+          ? ""
+          : "\n\n" + JSON.stringify(data, null, 2));
     }
 
     function setStatus(message, color) {
@@ -245,9 +281,27 @@
       statusDot.style.background = color;
     }
 
+    // فتح تسجيل الدخول الرسمي في TikTok.
+    function connectTikTok() {
+      setStatus(
+        "جارٍ فتح صفحة تسجيل الدخول إلى TikTok...",
+        "#eab308"
+      );
+
+      showResult(
+        "سيتم تحويلك إلى TikTok للموافقة على ربط الحساب."
+      );
+
+      window.location.assign(TIKTOK_AUTHORIZE_URL);
+    }
+
     async function sendRequest(action, extra = {}) {
-      const buttons = [...document.querySelectorAll("button")];
+      const buttons = [
+        ...document.querySelectorAll("button")
+      ];
+
       buttons.forEach(button => button.disabled = true);
+
       setStatus("جارٍ الاتصال بـ n8n...", "#eab308");
       showResult("جارٍ إرسال الطلب...");
 
@@ -265,6 +319,7 @@
         });
 
         const raw = await response.text();
+
         let data;
 
         try {
@@ -276,21 +331,33 @@
         if (!response.ok) {
           throw new Error(
             "n8n أعاد HTTP " + response.status + ": " +
-            (typeof data === "string" ? data :
-              JSON.stringify(data))
+            (
+              typeof data === "string"
+                ? data
+                : JSON.stringify(data)
+            )
           );
         }
 
-        setStatus("وصل رد من n8n — HTTP " + response.status,
-          "#16a34a");
+        setStatus(
+          "وصل رد من n8n — HTTP " + response.status,
+          "#16a34a"
+        );
+
         showResult("تم استلام استجابة من n8n:", data);
+
       } catch (error) {
-        setStatus("تعذر الاتصال أو لم تكتمل الاستجابة", "#dc2626");
+        setStatus(
+          "تعذر الاتصال أو لم تكتمل الاستجابة",
+          "#dc2626"
+        );
+
         showResult(
           "فشل الطلب: " + error.message +
-          "\n\nتحقق من تفعيل Workflow، وإعداد Respond to Webhook، " +
+          "\n\nتحقق من تفعيل Workflow وإعداد Respond to Webhook " +
           "وسماح CORS بطلبات موقع GitHub Pages."
         );
+
       } finally {
         buttons.forEach(button => button.disabled = false);
       }
@@ -302,7 +369,10 @@
     }
 
     function submitTask() {
-      const task = document.getElementById("task-input").value.trim();
+      const task = document
+        .getElementById("task-input")
+        .value
+        .trim();
 
       if (!task) {
         showResult("اكتب المهمة أولاً.");
