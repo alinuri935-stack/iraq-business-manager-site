@@ -258,9 +258,9 @@
     const API_URL =
       "https://alihadii.app.n8n.cloud/webhook/ibm-app-api";
 
-    // رابط TikTok الذي اختبرته وأكدت أنه يعمل.
+    // رابط TikTok مع إجبار ظهور شاشة الموافقة.
     const TIKTOK_AUTHORIZE_URL =
-      "https://www.tiktok.com/v2/auth/authorize/?client_key=sbaw4jq7l86my9pzo6&response_type=code&scope=user.info.basic&redirect_uri=https%3A%2F%2Falihadii.app.n8n.cloud%2Fwebhook%2Ftiktok-oauth-callback&state=ibm-prod-20261024";
+      "https://www.tiktok.com/v2/auth/authorize/?client_key=sbaw4jq7l86my9pzo6&response_type=code&scope=user.info.basic&redirect_uri=https%3A%2F%2Falihadii.app.n8n.cloud%2Fwebhook%2Ftiktok-oauth-callback&state=ibm-prod-20261024&disable_auto_auth=1";
 
     const statusText = document.getElementById("status-text");
     const statusDot = document.getElementById("status-dot");
@@ -281,7 +281,7 @@
       statusDot.style.background = color;
     }
 
-    // فتح تسجيل الدخول الرسمي في TikTok.
+    // فتح تسجيل الدخول الرسمي في TikTok مع طلب عرض الموافقة.
     function connectTikTok() {
       setStatus(
         "جارٍ فتح صفحة تسجيل الدخول إلى TikTok...",
