@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101a2c">
-  <title>Iraq Business Manager</title>
+  <meta name="description" content="Iraq Business Manager - لوحة إدارة الأعمال الذكية في العراق">
+  <title>Iraq Business Manager | لوحة التحكم</title>
+
   <style>
     :root {
       --bg: #f3f6fb;
@@ -13,31 +15,94 @@
       --muted: #69778d;
       --blue: #2563eb;
       --border: #e2e8f0;
+      --navy: #101a2c;
     }
+
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: Arial, Tahoma, sans-serif;
       color: var(--ink);
       background: var(--bg);
     }
+
+    a { color: inherit; }
+
     header {
       color: white;
       background: linear-gradient(130deg, #101a2c, #203c67);
-      padding: 28px 20px;
+      padding: 18px 20px 24px;
     }
-    .wrap { max-width: 1100px; margin: auto; }
-    header h1 { margin: 0 0 9px; font-size: 27px; }
-    header p { margin: 0; color: #d5deed; line-height: 1.8; }
-    main { max-width: 1100px; padding: 22px 16px; margin: auto; }
+
+    .wrap, main, .footer-wrap {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 18px;
+    }
+
+    .brand img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: white;
+      padding: 4px;
+    }
+
+    .brand h1 {
+      font-size: 22px;
+      margin: 0 0 5px;
+    }
+
+    .brand p {
+      margin: 0;
+      color: #d5deed;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .top-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-top: 14px;
+      border-top: 1px solid #ffffff30;
+    }
+
+    .top-nav a {
+      text-decoration: none;
+      color: white;
+      border: 1px solid #ffffff55;
+      border-radius: 8px;
+      padding: 9px 13px;
+      font-size: 14px;
+    }
+
+    .top-nav a:hover {
+      background: #ffffff18;
+    }
+
+    main {
+      padding: 22px 16px;
+    }
+
     .panel, .card {
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 19px;
     }
+
     .panel { margin-bottom: 20px; }
     .panel h2 { margin-top: 0; }
+
     .status {
       display: flex;
       align-items: center;
@@ -45,6 +110,7 @@
       gap: 10px;
       margin: 12px 0;
     }
+
     .dot {
       display: inline-block;
       width: 9px;
@@ -52,20 +118,35 @@
       border-radius: 50%;
       background: #94a3b8;
     }
-    .status-text { font-size: 14px; color: var(--muted); }
-    .muted { color: var(--muted); line-height: 1.8; }
+
+    .status-text {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .muted {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 15px;
     }
-    .card h3 { margin: 0 0 8px; font-size: 18px; }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
     .card p {
       color: var(--muted);
       font-size: 14px;
       line-height: 1.8;
       min-height: 48px;
     }
+
     button {
       width: 100%;
       border: 0;
@@ -77,16 +158,20 @@
       cursor: pointer;
       font-family: inherit;
     }
+
     button:hover { filter: brightness(.94); }
     button:disabled { opacity: .55; cursor: wait; }
+
     .secondary {
       background: #eaf0ff;
       color: #1745a5;
     }
+
     .tiktok-button {
       background: #111827;
       color: white;
     }
+
     #result {
       margin-top: 15px;
       padding: 13px;
@@ -99,6 +184,7 @@
       line-height: 1.8;
       display: none;
     }
+
     .endpoint {
       direction: ltr;
       text-align: left;
@@ -109,20 +195,68 @@
       padding: 10px;
       border-radius: 8px;
     }
+
     footer {
-      text-align: center;
-      padding: 24px 12px;
-      color: var(--muted);
+      background: #101a2c;
+      color: #d5deed;
+      padding: 24px 16px;
       font-size: 13px;
+      line-height: 2;
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 500px) {
+      .brand h1 { font-size: 19px; }
+      .brand img { width: 50px; height: 50px; }
+      .footer-wrap { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="wrap">
-      <h1>Iraq Business Manager</h1>
-      <p>لوحة إدارة الأعمال الذكية — العراق</p>
-      <p>المنتجات، الطلبات، العملاء، وحسابات التواصل الاجتماعي.</p>
+      <div class="brand">
+        <img
+          src="./logo.jpg"
+          alt="Iraq Business Manager logo"
+          onerror="this.style.display='none'">
+
+        <div>
+          <h1>Iraq Business Manager</h1>
+          <p>لوحة إدارة الأعمال الذكية — العراق</p>
+          <p>المنتجات، الطلبات، العملاء، وحسابات التواصل الاجتماعي.</p>
+        </div>
+      </div>
+
+      <nav class="top-nav" aria-label="التنقل الرئيسي">
+        <a href="./index.html">الصفحة الرئيسية</a>
+        <a href="./app.html" aria-current="page">التطبيق</a>
+        <a href="./privacy.html">سياسة الخصوصية</a>
+        <a href="./terms.html">الشروط والأحكام</a>
+      </nav>
     </div>
   </header>
 
@@ -152,34 +286,25 @@
       <article class="card">
         <h3>📦 المنتجات</h3>
         <p>طلب بيانات المنتجات المسجلة في النظام.</p>
-        <button onclick="sendRequest('get_products')">
-          عرض المنتجات
-        </button>
+        <button onclick="sendRequest('get_products')">عرض المنتجات</button>
       </article>
 
       <article class="card">
         <h3>🧾 الطلبات</h3>
         <p>طلب قائمة الطلبات وحالاتها.</p>
-        <button onclick="sendRequest('get_orders')">
-          عرض الطلبات
-        </button>
+        <button onclick="sendRequest('get_orders')">عرض الطلبات</button>
       </article>
 
       <article class="card">
         <h3>👥 العملاء</h3>
         <p>طلب بيانات العملاء المسجلين.</p>
-        <button onclick="sendRequest('get_customers')">
-          عرض العملاء
-        </button>
+        <button onclick="sendRequest('get_customers')">عرض العملاء</button>
       </article>
 
       <article class="card">
         <h3>🎵 TikTok</h3>
         <p>ربط حساب TikTok بالمشروع باستخدام تسجيل الدخول الرسمي.</p>
-        <button
-          type="button"
-          class="tiktok-button"
-          onclick="connectTikTok()">
+        <button type="button" class="tiktok-button" onclick="connectTikTok()">
           تسجيل الدخول باستخدام TikTok
         </button>
       </article>
@@ -187,33 +312,25 @@
       <article class="card">
         <h3>📘 Facebook</h3>
         <p>فحص حالة تكامل Facebook عند دعم ذلك من n8n.</p>
-        <button onclick="sendRequest('facebook_status')">
-          فحص Facebook
-        </button>
+        <button onclick="sendRequest('facebook_status')">فحص Facebook</button>
       </article>
 
       <article class="card">
         <h3>📸 Instagram</h3>
         <p>فحص حالة تكامل Instagram عند دعم ذلك من n8n.</p>
-        <button onclick="sendRequest('instagram_status')">
-          فحص Instagram
-        </button>
+        <button onclick="sendRequest('instagram_status')">فحص Instagram</button>
       </article>
 
       <article class="card">
         <h3>📊 التقارير</h3>
         <p>طلب ملخص التقارير من النظام عند تهيئة مسارها.</p>
-        <button onclick="sendRequest('get_reports')">
-          طلب التقارير
-        </button>
+        <button onclick="sendRequest('get_reports')">طلب التقارير</button>
       </article>
 
       <article class="card">
         <h3>🤖 مدير الأعمال الذكي</h3>
         <p>إرسال مهمة إلى مسار التطبيق إذا كان يدعمها.</p>
-        <button onclick="showTaskForm()">
-          إرسال مهمة
-        </button>
+        <button onclick="showTaskForm()">إرسال مهمة</button>
       </article>
     </section>
 
@@ -243,14 +360,27 @@
       <div class="endpoint" id="endpoint"></div>
 
       <p class="muted">
-        هذه الواجهة ترسل طلبات فقط. يجب إعداد Webhook2 في n8n
+        هذه الواجهة ترسل طلبات فقط. يجب إعداد Webhook في n8n
         لمعالجة كل action وإرجاع البيانات المناسبة. لا يتم تنفيذ
         عمليات شراء أو إرسال طلبات للموردين تلقائياً من هذه الواجهة.
       </p>
     </section>
   </main>
 
-  <footer>Iraq Business Manager © 2026</footer>
+  <footer>
+    <div class="footer-wrap">
+      <div>
+        <strong>Iraq Business Manager</strong>
+        <div>© 2026 — جميع الحقوق محفوظة</div>
+      </div>
+
+      <nav class="footer-links" aria-label="روابط قانونية">
+        <a href="./index.html">الرئيسية</a>
+        <a href="./privacy.html">سياسة الخصوصية</a>
+        <a href="./terms.html">الشروط والأحكام</a>
+      </nav>
+    </div>
+  </footer>
 
   <script>
     "use strict";
@@ -258,7 +388,6 @@
     const API_URL =
       "https://alihadii.app.n8n.cloud/webhook/ibm-app-api";
 
-    // رابط TikTok مع إجبار ظهور شاشة الموافقة.
     const TIKTOK_AUTHORIZE_URL =
       "https://www.tiktok.com/v2/auth/authorize/?client_key=sbaw4jq7l86my9pzo6&response_type=code&scope=user.info.basic&redirect_uri=https%3A%2F%2Falihadii.app.n8n.cloud%2Fwebhook%2Ftiktok-oauth-callback&state=ibm-prod-20261024&disable_auto_auth=1";
 
@@ -281,7 +410,6 @@
       statusDot.style.background = color;
     }
 
-    // فتح تسجيل الدخول الرسمي في TikTok مع طلب عرض الموافقة.
     function connectTikTok() {
       setStatus(
         "جارٍ فتح صفحة تسجيل الدخول إلى TikTok...",
@@ -319,7 +447,6 @@
         });
 
         const raw = await response.text();
-
         let data;
 
         try {
@@ -331,11 +458,7 @@
         if (!response.ok) {
           throw new Error(
             "n8n أعاد HTTP " + response.status + ": " +
-            (
-              typeof data === "string"
-                ? data
-                : JSON.stringify(data)
-            )
+            (typeof data === "string" ? data : JSON.stringify(data))
           );
         }
 
