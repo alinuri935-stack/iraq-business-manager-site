@@ -6,7 +6,6 @@
   <meta name="theme-color" content="#101a2c">
   <meta name="description" content="Iraq Business Manager - لوحة إدارة الأعمال الذكية في العراق">
   <title>Iraq Business Manager | لوحة التحكم</title>
-
   <style>
     :root {
       --bg: #f3f6fb;
@@ -101,6 +100,7 @@
     }
 
     .panel { margin-bottom: 20px; }
+
     .panel h2 { margin-top: 0; }
 
     .status {
@@ -160,7 +160,11 @@
     }
 
     button:hover { filter: brightness(.94); }
-    button:disabled { opacity: .55; cursor: wait; }
+
+    button:disabled {
+      opacity: .55;
+      cursor: wait;
+    }
 
     .secondary {
       background: #eaf0ff;
@@ -229,8 +233,16 @@
 
     @media (max-width: 500px) {
       .brand h1 { font-size: 19px; }
-      .brand img { width: 50px; height: 50px; }
-      .footer-wrap { flex-direction: column; align-items: flex-start; }
+
+      .brand img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .footer-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -263,6 +275,7 @@
   <main>
     <section class="panel">
       <h2>لوحة التحكم</h2>
+
       <p class="muted">
         واجهة موحدة لإدارة عمليات المشروع من خلال n8n.
         اختر القسم لإرسال طلب إلى النظام.
@@ -286,25 +299,35 @@
       <article class="card">
         <h3>📦 المنتجات</h3>
         <p>طلب بيانات المنتجات المسجلة في النظام.</p>
-        <button onclick="sendRequest('get_products')">عرض المنتجات</button>
+        <button onclick="sendRequest('get_products')">
+          عرض المنتجات
+        </button>
       </article>
 
       <article class="card">
         <h3>🧾 الطلبات</h3>
         <p>طلب قائمة الطلبات وحالاتها.</p>
-        <button onclick="sendRequest('get_orders')">عرض الطلبات</button>
+        <button onclick="sendRequest('get_orders')">
+          عرض الطلبات
+        </button>
       </article>
 
       <article class="card">
         <h3>👥 العملاء</h3>
         <p>طلب بيانات العملاء المسجلين.</p>
-        <button onclick="sendRequest('get_customers')">عرض العملاء</button>
+        <button onclick="sendRequest('get_customers')">
+          عرض العملاء
+        </button>
       </article>
 
       <article class="card">
         <h3>🎵 TikTok</h3>
         <p>ربط حساب TikTok بالمشروع باستخدام تسجيل الدخول الرسمي.</p>
-        <button type="button" class="tiktok-button" onclick="connectTikTok()">
+
+        <button
+          type="button"
+          class="tiktok-button"
+          onclick="connectTikTok()">
           تسجيل الدخول باستخدام TikTok
         </button>
       </article>
@@ -312,29 +335,42 @@
       <article class="card">
         <h3>📘 Facebook</h3>
         <p>فحص حالة تكامل Facebook عند دعم ذلك من n8n.</p>
-        <button onclick="sendRequest('facebook_status')">فحص Facebook</button>
+        <button onclick="sendRequest('facebook_status')">
+          فحص Facebook
+        </button>
       </article>
 
       <article class="card">
         <h3>📸 Instagram</h3>
         <p>فحص حالة تكامل Instagram عند دعم ذلك من n8n.</p>
-        <button onclick="sendRequest('instagram_status')">فحص Instagram</button>
+        <button onclick="sendRequest('instagram_status')">
+          فحص Instagram
+        </button>
       </article>
 
       <article class="card">
         <h3>📊 التقارير</h3>
         <p>طلب ملخص التقارير من النظام عند تهيئة مسارها.</p>
-        <button onclick="sendRequest('get_reports')">طلب التقارير</button>
+        <button onclick="sendRequest('get_reports')">
+          طلب التقارير
+        </button>
       </article>
 
       <article class="card">
         <h3>🤖 مدير الأعمال الذكي</h3>
         <p>إرسال مهمة إلى مسار التطبيق إذا كان يدعمها.</p>
-        <button onclick="showTaskForm()">إرسال مهمة</button>
+        <button onclick="showTaskForm()">
+          إرسال مهمة
+        </button>
       </article>
     </section>
 
-    <section class="panel" id="task-panel" hidden style="margin-top:20px">
+    <section
+      class="panel"
+      id="task-panel"
+      hidden
+      style="margin-top:20px">
+
       <h2>إرسال مهمة</h2>
 
       <label for="task-input">اكتب المهمة المطلوبة</label>
@@ -357,6 +393,7 @@
 
     <section class="panel" style="margin-top:20px">
       <h3>عنوان خدمة n8n</h3>
+
       <div class="endpoint" id="endpoint"></div>
 
       <p class="muted">
@@ -371,7 +408,7 @@
     <div class="footer-wrap">
       <div>
         <strong>Iraq Business Manager</strong>
-        <div>© 2026 — جميع الحقوق محفوظة</div>
+        <div>©️ 2026 — جميع الحقوق محفوظة</div>
       </div>
 
       <nav class="footer-links" aria-label="روابط قانونية">
@@ -388,8 +425,10 @@
     const API_URL =
       "https://alihadii.app.n8n.cloud/webhook/ibm-app-api";
 
-    const TIKTOK_AUTHORIZE_URL =
-      "https://www.tiktok.com/v2/auth/authorize/?client_key=sbaw4jq7l86my9pzo6&response_type=code&scope=user.info.basic&redirect_uri=https%3A%2F%2Falihadii.app.n8n.cloud%2Fwebhook%2Ftiktok-oauth-callback&state=ibm-prod-20261024&disable_auto_auth=1";
+    // يبدأ تسجيل الدخول عبر Webhook الخاص بـ n8n.
+    // بعد ذلك يجب أن يوجّه Workflow المستخدم إلى TikTok.
+    const TIKTOK_OAUTH_START_URL =
+      "https://alihadii.app.n8n.cloud/webhook/tiktok-oauth-start";
 
     const statusText = document.getElementById("status-text");
     const statusDot = document.getElementById("status-dot");
@@ -399,6 +438,7 @@
 
     function showResult(message, data) {
       resultBox.style.display = "block";
+
       resultBox.textContent = message +
         (data === undefined
           ? ""
@@ -410,17 +450,19 @@
       statusDot.style.background = color;
     }
 
+    // التعديل الأساسي: الانتقال إلى tiktok-oauth-start
+    // بدلاً من فتح صفحة موافقة TikTok مباشرةً.
     function connectTikTok() {
       setStatus(
-        "جارٍ فتح صفحة تسجيل الدخول إلى TikTok...",
+        "جارٍ بدء تسجيل الدخول إلى TikTok عبر n8n...",
         "#eab308"
       );
 
       showResult(
-        "سيتم تحويلك إلى TikTok للموافقة على ربط الحساب."
+        "جارٍ الاتصال بمسار tiktok-oauth-start لتحويلك إلى TikTok."
       );
 
-      window.location.assign(TIKTOK_AUTHORIZE_URL);
+      window.location.assign(TIKTOK_OAUTH_START_URL);
     }
 
     async function sendRequest(action, extra = {}) {
@@ -436,9 +478,11 @@
       try {
         const response = await fetch(API_URL, {
           method: "POST",
+
           headers: {
             "Content-Type": "application/json"
           },
+
           body: JSON.stringify({
             action: action,
             source: "iraq-business-manager-site",
@@ -447,6 +491,7 @@
         });
 
         const raw = await response.text();
+
         let data;
 
         try {
@@ -458,7 +503,11 @@
         if (!response.ok) {
           throw new Error(
             "n8n أعاد HTTP " + response.status + ": " +
-            (typeof data === "string" ? data : JSON.stringify(data))
+            (
+              typeof data === "string"
+                ? data
+                : JSON.stringify(data)
+            )
           );
         }
 
@@ -488,6 +537,7 @@
 
     function showTaskForm() {
       document.getElementById("task-panel").hidden = false;
+
       document.getElementById("task-input").focus();
     }
 
